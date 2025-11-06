@@ -26,6 +26,7 @@ public class SalesItem
         this.name = name;
         this.price = price;
         comments = new ArrayList<>();
+    
     }
 
     /**
@@ -50,6 +51,10 @@ public class SalesItem
     public int getNumberOfComments()
     {
         return comments.size();
+    }
+    
+    public void addComment(){
+        
     }
     
     /**
