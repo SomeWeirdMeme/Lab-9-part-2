@@ -11,6 +11,7 @@ import org.junit.Test;
  */
 public class SalesItemTest
 {
+    //question 15
     private SalesItem Zambony;
     /**
      * Default constructor for test class SalesItemTest
@@ -39,13 +40,21 @@ public class SalesItemTest
     public void tearDown()
     {
     }
-
+    
+    public void testRateBoundary(){
+        //question uhh 16
+        SalesItem item = new SalesItem("bloo blaw", 1000);
+        assertFalse(item.addComment("Alice", "Rating too low", 0));
+        assertFalse(item.addComment("Mahik", "Rating too high bruh", 6));
+    }
+    
     /**
      * Test that a comment can be added, and that the comment count is correct afterwards.
      */
     @Test
     public void testAddComment()
     {
+        //question 15
         Zambony.addComment("Mousilini","I love Controlling my people", 5);
         assertEquals(false, Zambony.addComment("Mousilini", "I love Controlling my people",5));
         assertEquals(true, Zambony.addComment("James Duckling", "This book is great. I perform brain surgery every week now.", 4));
