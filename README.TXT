@@ -4,6 +4,7 @@ LASTLY it runs tearDown and aftereach after the test to finish.
 15.check code// 15
 16.check code// q 16
 17.View Rerun, rerun failed tests, go to source, Show stack trace/ failure details,copy.
-18.
-19.
-20.
+18.code//18
+19.code//19
+20.Im not too sure it kinda of confuses me on how to feel reasonably confident...
+21 check code//21
