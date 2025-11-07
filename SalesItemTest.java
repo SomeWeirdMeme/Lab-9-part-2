@@ -39,6 +39,7 @@ public class SalesItemTest
     @After
     public void tearDown()
     {
+        Zambony = null;
     }
     
     public void testRateBoundary(){
@@ -70,7 +71,22 @@ public class SalesItemTest
         SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2", 19900);
         assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", -5));
     }
-
+    
+    public void testFindMostHelpfulComment(){
+        //Question 19
+        Zambony.addComment("Lebron", "WOWOWOWOOW", 5);
+        Zambony.addComment("Bob", "WOWOOWOWOWOW", 4);
+        
+        Zambony.upvoteComment(0);
+        Zambony.upvoteComment(0);
+        Zambony.upvoteComment(1);
+        
+        Comment mostHelpful = Zambony.findMostHelpfulComment();
+        
+        assertEquals("Lebron", mostHelpful.getAuthor());
+        assertEquals(2, mostHelpful.getVoteCount());
+    }
+    
     /**
      * Test that a sales item is correctly initialised (name and price).
      */

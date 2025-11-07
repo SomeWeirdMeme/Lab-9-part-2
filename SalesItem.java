@@ -115,6 +115,7 @@ public class SalesItem
     /**
      * Show all comments on screen. (Currently, for testing purposes: print to
      * the terminal. Modify later for web display.)
+     * //QUESTIOON 21
      */
     public void showInfo()
     {
@@ -122,9 +123,11 @@ public class SalesItem
         System.out.println("Price: " + priceString(price));
         System.out.println();
         System.out.println("Customer comments:");
-        for(Comment comment : comments) {
+        int i = 0;
+        while(i < comments.size()) {
             System.out.println("-------------------------------------------");
-            System.out.println(comment.getFullDetails());
+            System.out.println(comments.get(i).getFullDetails());
+            i++;
         }
         System.out.println();
         System.out.println("===========================================");
@@ -134,16 +137,22 @@ public class SalesItem
      * Return the most helpful comment. The most useful comment is the one with
      * the highest vote balance. If there are multiple comments with equal 
      * highest balance, return any one of them.
+     * //QUESTION 21
      */
     public Comment findMostHelpfulComment()
     {
-        Iterator<Comment> it = comments.iterator();
-        Comment best = it.next();
-        while(it.hasNext()) {
-            Comment current = it.next();
+       if(comments.isEmpty()){
+           return null;
+       }
+
+        Comment best = comments.get(0);
+        int i = 1;
+        while(i < comments.size()) {
+            Comment current = comments.get(i);
             if(current.getVoteCount() > best.getVoteCount()) {
                 best = current;
             }
+            i++;
         }
         return best;
     }
@@ -160,13 +169,17 @@ public class SalesItem
     /**
      * Find the comment by the author with the given name.
      * @return The comment if it exists; null if it doesn't.
+     * //question 21
      */
     private Comment findCommentByAuthor(String author)
     {
-        for(Comment comment : comments) {
-            if(comment.getAuthor().equals(author)) {
+        int i = 0;
+        while(i < comments.size()){
+            Comment comment = comments.get(i);
+            if(comment.getAuthor().equals(author)){
                 return comment;
             }
+            i++;
         }
         return null;
     }
